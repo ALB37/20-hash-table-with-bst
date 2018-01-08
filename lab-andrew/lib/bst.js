@@ -69,6 +69,7 @@ class BST {
     }
     if (!this.root){
       this.root = new BSTNode(key, value);
+      return;
     }
     return this._insert(this.root, key, value);
   }
