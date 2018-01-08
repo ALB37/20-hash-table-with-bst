@@ -119,4 +119,15 @@ describe('tests for bst.js', () => {
     });
   });
 
+  describe('testing isBalanced function', () => {
+    test('balanced tree should return true', () => {
+      let balancedTree = new BST();
+      balancedTree.insert(5);
+      balancedTree.insert(3);
+      balancedTree.insert(7);
+      expect(balancedTree.isBalanced()).toEqual(true);
+      balancedTree.insert(2);
+      expect(balancedTree.isBalanced()).toEqual(true);
+    });
+  });
 });
