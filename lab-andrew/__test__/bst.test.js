@@ -129,5 +129,19 @@ describe('tests for bst.js', () => {
       balancedTree.insert(2);
       expect(balancedTree.isBalanced()).toEqual(true);
     });
+    test('unbalanced tree should return false', () => {
+      let unbalancedTree = new BST();
+      unbalancedTree.insert(5);
+      unbalancedTree.insert(6);
+      unbalancedTree.insert(8);
+      expect(unbalancedTree.isBalanced()).toEqual(false);
+      unbalancedTree.insert(7);
+      expect(unbalancedTree.isBalanced()).toEqual(false);
+      unbalancedTree.insert(4);
+      unbalancedTree.insert(3);
+      unbalancedTree.insert(2);
+      unbalancedTree.insert(1);
+      expect(unbalancedTree.isBalanced()).toEqual(false);
+    });
   });
 });

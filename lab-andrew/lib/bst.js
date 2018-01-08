@@ -14,6 +14,35 @@ class BST {
     this.root = null;
   }
 
+  isBalanced(){
+    if (this._isBalanced(this.root) > -1){
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  _isBalanced(node){
+    if (!node){
+      return 0;
+    }
+    let leftHeight = this._isBalanced(node.left);
+    if (leftHeight === -1){
+      return -1;
+    }
+    let rightHeight = this._isBalanced(node.right);
+    if (rightHeight === -1){
+      return -1;
+    }
+    if (Math.abs(leftHeight - rightHeight) > 1){
+      return -1;
+    }
+    if (leftHeight > rightHeight){
+      return leftHeight + 1;
+    }
+    return rightHeight + 1;
+  }
+
   find(key){
     if (typeof key !== 'number'){
       throw new TypeError('key must be a number');
