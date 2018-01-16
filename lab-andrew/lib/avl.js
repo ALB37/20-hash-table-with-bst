@@ -5,6 +5,7 @@ class AVLNode{
     this.data = data;
     this.left = null;
     this.right = null;
+    this.balance = 0;
   }
 }
 
@@ -31,93 +32,122 @@ class AVL{
   }
 
   insert(value){
-    if (!this.root){
+    if (!this.root) {
       this.root = new AVLNode(value);
       return;
     }
     if (this.find(value) !== -1){
       return -1;
     }
-    if (value < this.root.data && this._treeHeight(this.root.left) - this._treeHeight(this.root.right) > 0){
-      console.log('rotating');
-      if (value < this.root.left.data){
-        console.log('LL');
-        this.root = this._rotateLL(this.root);
-      } 
-      else {
-        console.log('LR');
-        this._insert(this.root, value);
-        // this.root = this._rotateLR(this.root);
-        return;
-      }
-    } else if (value > this.root.data && this._treeHeight(this.root.right) - this._treeHeight(this.root.left) > 0){
-      console.log('rotating');
-      if (value > this.root.right.data) {
-        console.log('RR');
-        this.root = this._rotateRR(this.root);
-      } 
-      else {
-        console.log('RL');
-        this._insert(this.root, value);
-        // this.root = this._rotateRL(this.root);
-        return;
-      }
-    }
     this._insert(this.root, value);
+    this._rotate(this.root);
   }
+
+  // insert(value){
+  //   if (!this.root){
+  //     this.root = new AVLNode(value);
+  //     return;
+  //   }
+  //   if (this.find(value) !== -1){
+  //     return -1;
+  //   }
+  //   if (value < this.root.data && this._treeHeight(this.root.left) - this._treeHeight(this.root.right) > 0){
+  //     // if this.root.balance -2 do this stuff
+  //     console.log('rotating');
+  //     if (value < this.root.left.data){
+  //       console.log('LL');
+  //       this.root = this._rotateLL(this.root);
+  //     } 
+  //     else {
+  //       console.log('LR');
+  //       this._insert(this.root, value);
+  //       // this.root = this._rotateLR(this.root);
+  //       return;
+  //     }
+  //   } else if (value > this.root.data && this._treeHeight(this.root.right) - this._treeHeight(this.root.left) > 0){
+  //     //if this.root.balance +2 do this stuff
+  //     console.log('rotating');
+  //     if (value > this.root.right.data) {
+  //       console.log('RR');
+  //       this.root = this._rotateRR(this.root);
+  //     } 
+  //     else {
+  //       console.log('RL');
+  //       this._insert(this.root, value);
+  //       // this.root = this._rotateRL(this.root);
+  //       return;
+  //     }
+  //   }
+  //   this._insert(this.root, value);
+  // }
   
   _insert(node, value){
-    if (node.data > value){
-      if (this._treeHeight(node.left) - this._treeHeight(node.right) > 0){
-        console.log('rotating');
-        if (value < node.left.data) {
-          console.log('LL');
-          node = this._rotateLL(node);
-        } else {
-          console.log('LR');
-          if (!node.left) {
-            node.left = new AVLNode(value);
-            // node = this._rotateLR(node);
-            return;
-          } else {
-            this._insert(node.left, value);
-            node = this._rotateLR(node);
-            return;
-          }
-          // node = this._rotateLR(node);
-        }
-      }
-      if (!node.left){
+    if(node.data > value){
+      if (!node.left) {
         node.left = new AVLNode(value);
         return;
       }
-      console.log(node);
       return this._insert(node.left, value);
     }
-    if (this._treeHeight(node.right) - this._treeHeight(node.left) > 0) {
-      console.log('rotating');
-      if (value > node.right.data) {
-        console.log('RR');
-        node = this._rotateRR(node);
-      } else {
-        console.log('RL');
-        if (!node.right) {
-          node.right = new AVLNode(value);
-          return;
-        } else {
-          this._insert(node.right, value);
-          node = this._rotateRL(node);
-          return;
-        }
-      }
-    }
-    if (!node.right){
+    if (!node.right) {
       node.right = new AVLNode(value);
       return;
     }
     return this._insert(node.right, value);
-    
   }
+
+  // _insert(node, value){
+  //   if (node.data > value){
+  //     if (this._treeHeight(node.left) - this._treeHeight(node.right) > 0){
+  //       console.log('rotating');
+  //       if (value < node.left.data) {
+  //         console.log('LL');
+  //         node = this._rotateLL(node);
+  //       } else {
+  //         console.log('LR');
+  //         if (!node.left) {
+  //           node.left = new AVLNode(value);
+  //           // node = this._rotateLR(node);
+  //           return;
+  //         } else {
+  //           this._insert(node.left, value);
+  //           node = this._rotateLR(node);
+  //           return;
+  //         }
+  //         // node = this._rotateLR(node);
+  //       }
+  //     }
+  //     if (!node.left){
+  //       node.left = new AVLNode(value);
+  //       return;
+  //     }
+  //     console.log(node);
+  //     return this._insert(node.left, value);
+  //   }
+  //   if (this._treeHeight(node.right) - this._treeHeight(node.left) > 0) {
+  //     console.log('rotating');
+  //     if (value > node.right.data) {
+  //       console.log('RR');
+  //       node = this._rotateRR(node);
+  //     } else {
+  //       console.log('RL');
+  //       if (!node.right) {
+  //         node.right = new AVLNode(value);
+  //         return;
+  //       } else {
+  //         this._insert(node.right, value);
+  //         node = this._rotateRL(node);
+  //         return;
+  //       }
+  //     }
+  //   }
+  //   if (!node.right){
+  //     node.right = new AVLNode(value);
+  //     return;
+  //   }
+  //   return this._insert(node.right, value);
+    
+  // }
   
   _treeHeight(node){
     let height = 0;
@@ -135,6 +165,10 @@ class AVL{
       })(node, 1);
     }
     return height;
+  }
+
+  _rotate(node){
+    
   }
 
   _rotateLL(node){
@@ -162,32 +196,11 @@ class AVL{
   }
 
   isBalanced() {
-    if (this._isBalanced(this.root) > -1) {
+    if (Math.abs(this._treeHeight(this.root.left) - this._treeHeight(this.root.right)) <= 1) {
       return true;
     } else {
       return false;
     }
-  }
-
-  _isBalanced(node) {
-    if (!node) {
-      return 0;
-    }
-    let leftHeight = this._isBalanced(node.left);
-    if (leftHeight === -1) {
-      return -1;
-    }
-    let rightHeight = this._isBalanced(node.right);
-    if (rightHeight === -1) {
-      return -1;
-    }
-    if (Math.abs(leftHeight - rightHeight) > 1) {
-      return -1;
-    }
-    if (leftHeight > rightHeight) {
-      return leftHeight + 1;
-    }
-    return rightHeight + 1;
   }
 
 }
