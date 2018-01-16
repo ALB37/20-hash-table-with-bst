@@ -114,12 +114,10 @@ class AVL{
           node.left = this._rotateLL(node.left);
           this._setBalance(node.left);
           return;
-        }
-        if (node.left.left.balance > 0) {
-          node.left = this._rotateLR(node.left);
-          this._setBalance(node.left);
-          return;
-        }
+        }      
+        node.left = this._rotateLR(node.left);
+        this._setBalance(node.left);
+        return;
       }
       if (node.left.balance > 1){
         if (node.left.right.balance > 1 || node.left.right.balance < -1) {
@@ -132,11 +130,9 @@ class AVL{
           this._setBalance(node.right);
           return;
         }
-        if (node.left.right.balance > 0){
-          node.left = this._rotateRR(node.left);
-          this._setBalance(node.right);
-          return;
-        }
+        node.left = this._rotateRR(node.left);
+        this._setBalance(node.right);
+        return;
       }
     }
     if (node.right){
@@ -151,11 +147,9 @@ class AVL{
           this._setBalance(node.left);
           return;
         }
-        if (node.right.left.balance > 0) {
-          node.right = this._rotateLR(node.right);
-          this._setBalance(node.left);
-          return;
-        }
+        node.right = this._rotateLR(node.right);
+        this._setBalance(node.left);
+        return;
       }
       if (node.right.balance > 1) {
         if (node.right.right.balance > 1 || node.right.right.balance < -1) {
@@ -168,16 +162,18 @@ class AVL{
           this._setBalance(node.right);
           return;
         }
-        if (node.right.right.balance > 0) {
-          node.right = this._rotateRR(node.right);
-          this._setBalance(node.right);
-          return;
-        }
+        node.right = this._rotateRR(node.right);
+        this._setBalance(node.right);
+        return;
       }
     }
   }
 
   _setBalance(node){
+    if (!node){
+      return;
+    }
+
     if (node.left){
       this._setBalance(node.left);
     }

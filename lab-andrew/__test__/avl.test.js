@@ -108,8 +108,9 @@ describe('tests for avl.js', () => {
       expect(testTree.isBalanced()).toEqual(true);
     });
 
-    test('testing that AVL tree maintains balanced in various configurations', () => {
+    test('testing that AVL tree maintains balanced in various configurations 1', () => {
       const balancedTree = new AVL();
+      balancedTree.insert(120);
       balancedTree.insert(90);
       balancedTree.insert(100);
       balancedTree.insert(110);
@@ -119,12 +120,148 @@ describe('tests for avl.js', () => {
       expect(testTree.isBalanced()).toEqual(true);
     });
 
+    test('testing that AVL tree maintains balanced in various configurations 2', () => {
+      const balancedTree = new AVL();
+      balancedTree.insert(50);
+      balancedTree.insert(30);
+      balancedTree.insert(40);
+      balancedTree.insert(20);
+      balancedTree.insert(25);
+      balancedTree.insert(10);
+      balancedTree.insert(5);
+      expect(testTree.isBalanced()).toEqual(true);
+    });
+
+    test('testing that AVL tree maintains balanced in various configurations 3', () => {
+      const balancedTree = new AVL();
+      balancedTree.insert(50);
+      balancedTree.insert(10);
+      balancedTree.insert(5);
+      balancedTree.insert(20);
+      balancedTree.insert(25);
+      balancedTree.insert(30);
+      balancedTree.insert(40);
+      expect(testTree.isBalanced()).toEqual(true);
+    });
+
+    test('testing that AVL tree maintains balanced in various configurations 4', () => {
+      const balancedTree = new AVL();
+      balancedTree.insert(50);
+      balancedTree.insert(10);
+      balancedTree.insert(5);
+      balancedTree.insert(20);
+      balancedTree.insert(30);
+      balancedTree.insert(40);
+      expect(testTree.isBalanced()).toEqual(true);
+    });
+
+
+    test('testing that AVL tree maintains balanced in various configurations 5', () => {
+      const balancedTree = new AVL();
+      balancedTree.insert(50);
+      balancedTree.insert(30);
+      balancedTree.insert(40);
+      balancedTree.insert(20);
+      balancedTree.insert(10);
+      balancedTree.insert(5);
+      expect(testTree.isBalanced()).toEqual(true);
+    });
+
+    test('testing that AVL tree maintains balanced in various configurations 6', () => {
+      const balancedTree = new AVL();
+      balancedTree.insert(50);
+      balancedTree.insert(30);
+      balancedTree.insert(40);
+      balancedTree.insert(20);
+      balancedTree.insert(25);
+      balancedTree.insert(24);
+      expect(testTree.isBalanced()).toEqual(true);
+    });
+    test('testing that AVL tree maintains balanced in various configurations 7', () => {
+      const balancedTree = new AVL();
+      balancedTree.insert(50);
+      balancedTree.insert(30);
+      balancedTree.insert(40);
+      balancedTree.insert(20);
+      balancedTree.insert(23);
+      balancedTree.insert(24);
+      expect(testTree.isBalanced()).toEqual(true);
+    });
+    test('testing that AVL tree maintains balanced in various configurations 8', () => {
+      const balancedTree = new AVL();
+      balancedTree.insert(50);
+      balancedTree.insert(30);
+      balancedTree.insert(40);
+      balancedTree.insert(20);
+      balancedTree.insert(22);
+      balancedTree.insert(23);
+      expect(testTree.isBalanced()).toEqual(true);
+    });
+    test('testing that AVL tree maintains balanced in various configurations 9', () => {
+      const balancedTree = new AVL();
+      balancedTree.insert(50);
+      balancedTree.insert(30);
+      balancedTree.insert(40);
+      balancedTree.insert(20);
+      balancedTree.insert(33);
+      balancedTree.insert(35);
+      expect(testTree.isBalanced()).toEqual(true);
+    });
+    test('testing that AVL tree maintains balanced in various configurations 10', () => {
+      const balancedTree = new AVL();
+      balancedTree.insert(60);
+      balancedTree.insert(30);
+      balancedTree.insert(40);
+      balancedTree.insert(20);
+      balancedTree.insert(50);
+      balancedTree.insert(45);
+      expect(testTree.isBalanced()).toEqual(true);
+    });
+    test('testing that AVL tree maintains balanced in various configurations 11', () => {
+      const balancedTree = new AVL();
+      balancedTree.insert(60);
+      balancedTree.insert(30);
+      balancedTree.insert(40);
+      balancedTree.insert(20);
+      balancedTree.insert(39);
+      balancedTree.insert(35);
+      expect(testTree.isBalanced()).toEqual(true);
+    });
+
     test('testing that AVL tree maintains balanced when loaded with random values', () => {
       const balancedTree = new AVL();
       let random = () => Math.floor(Math.random() * 100);
       balancedTree.insert(random());
       balancedTree.insert(random());
       balancedTree.insert(random());
+      expect(testTree.isBalanced()).toEqual(true);
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      expect(testTree.isBalanced()).toEqual(true);
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      expect(testTree.isBalanced()).toEqual(true);
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      expect(testTree.isBalanced()).toEqual(true);
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      expect(testTree.isBalanced()).toEqual(true);
       balancedTree.insert(random());
       balancedTree.insert(random());
       balancedTree.insert(random());
@@ -133,6 +270,54 @@ describe('tests for avl.js', () => {
       balancedTree.insert(random());
       balancedTree.insert(random());
       balancedTree.insert(random());
+      expect(testTree.isBalanced()).toEqual(true);
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      expect(testTree.isBalanced()).toEqual(true);
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      expect(testTree.isBalanced()).toEqual(true);
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      expect(testTree.isBalanced()).toEqual(true);
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      expect(testTree.isBalanced()).toEqual(true);
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      expect(testTree.isBalanced()).toEqual(true);
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      expect(testTree.isBalanced()).toEqual(true);
       balancedTree.insert(random());
       balancedTree.insert(random());
       balancedTree.insert(random());
