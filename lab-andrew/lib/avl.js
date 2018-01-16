@@ -172,71 +172,87 @@ class AVL{
   _rotate(node){
     if (node.left){
       if (node.left.balance < -1){
-        //L rotation types
         if (node.left.left.balance > 1 || node.left.left.balance < -1){
           this._rotate(node.left);
           node.left.balance++;
           return;
         }
         if (node.left.left < 0){
-          //LL rotation
-          //then set balance for all nodes of the subtree
+          node.left = this._rotateLL(node.left);
+          this._setBalance(node.left);
+          return;
         }
         if (node.left.left > 0) {
-          //LR rotation
-          //then set balance for all nodes of the subtree
+          node.left = this._rotateLR(node.left);
+          this._setBalance(node.left);
+          return;
         }
       }
       if (node.left.balance > 1){
-        //R rotation types
         if (node.left.right.balance > 1 || node.left.right.balance < -1) {
           this._rotate(node.left);
           node.left.balance--;
           return;
         }
         if (node.left.right < 0){
-          //RL rotation
-          //then set balance for all nodes of the subtree
+          node.left = this._rotateRL(node.left);
+          this._setBalance(node.right);
+          return;
         }
         if (node.left.right > 0){
-          //RR rotation
-          //then set balance for all nodes of the subtree
+          node.left = this._rotateRR(node.left);
+          this._setBalance(node.right);
+          return;
         }
       }
     }
     if (node.right){
       if (node.right.balance < -1) {
-        //L rotation types
         if (node.right.left.balance > 1 || node.right.left.balance < -1) {
           this._rotate(node.right);
           node.right.balance++;
           return;
         }
         if (node.right.left < 0) {
-          //LL rotation
-          //then set balance for all nodes of the subtree
+          node.right = this._rotateLL(node.right);
+          this._setBalance(node.left);
+          return;
         }
         if (node.right.left > 0) {
-          //LR rotation
-          //then set balance for all nodes of the subtree
+          node.right = this._rotateLR(node.right);
+          this._setBalance(node.left);
+          return;
         }
       }
       if (node.right.balance > 1) {
-        //R rotation types
         if (node.right.right.balance > 1 || node.right.right.balance < -1) {
           this._rotate(node.right);
           node.right.balance--;
           return;
         }
         if (node.right.right < 0) {
-          //RL rotation
-          //then set balance for all nodes of the subtree
+          node.right = this._rotateRL(node.right);
+          this._setBalance(node.right);
+          return;
         }
         if (node.right.right > 0) {
-          //RR rotation
-          //then set balance for all nodes of the subtree
+          node.right = this._rotateRR(node.right);
+          this._setBalance(node.right);
+          return;
         }
       }
+    }
+  }
+
+  _setBalance(node){
+    if (node.left){
+      this._setBalance(node.left);
+    }
+
+    node.balance = this._treeHeight(node.right) - this._treeHeight(node.left);
+
+    if (node.right){
+      this._setBalance(node.right);
     }
   }
 
