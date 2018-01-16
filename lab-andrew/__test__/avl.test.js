@@ -48,6 +48,14 @@ describe('tests for avl.js', () => {
     });
   });
 
+  describe('testing isBalanced funtion', () => {
+    test('isBalanced should return false if a tree is unbalanced', () => {
+      const unbalancedTree = new AVL();
+      unbalancedTree.root = { data: 1, left: null, right: { data: 2, left: null, right: { data: 3, left: null, right: null, balance: 0 }, balance: 0 }, balance: 0};
+      expect(unbalancedTree.isBalanced()).toEqual(false);
+    });
+  });
+
   describe('testing that AVL tree maintains balance', () => {
     test('testing that AVL tree maintains balance when right loaded', () => {
       const balancedTree = new AVL();
@@ -113,40 +121,23 @@ describe('tests for avl.js', () => {
 
     test('testing that AVL tree maintains balanced when loaded with random values', () => {
       const balancedTree = new AVL();
-      let random = Math.floor(Math.random() * 100);
-      console.log('1', random);
-      balancedTree.insert(random);
-      expect(testTree.isBalanced()).toEqual(true);
-      random = Math.floor(Math.random() * 100);
-      console.log('2', random);
-      balancedTree.insert(random);
-      expect(testTree.isBalanced()).toEqual(true);
-      random = Math.floor(Math.random() * 100);
-      console.log('3', random);
-      balancedTree.insert(random);
-      expect(testTree.isBalanced()).toEqual(true);
-      random = Math.floor(Math.random() * 100);
-      console.log('4', random);
-      balancedTree.insert(random);
-      expect(testTree.isBalanced()).toEqual(true);
-      random = Math.floor(Math.random() * 100);
-      console.log('5', random);
-      balancedTree.insert(random);
-      expect(testTree.isBalanced()).toEqual(true);
-      random = Math.floor(Math.random() * 100);
-      console.log('6', random);
-      balancedTree.insert(random);
-      expect(testTree.isBalanced()).toEqual(true);
-      random = Math.floor(Math.random() * 100);
-      console.log('7', random);
-      balancedTree.insert(random);
-      expect(testTree.isBalanced()).toEqual(true);
-      random = Math.floor(Math.random() * 100);
-      console.log('8', random);
-      balancedTree.insert(random);
-      expect(testTree.isBalanced()).toEqual(true);
-      random = Math.floor(Math.random() * 100);
-      console.log('9', random);
+      let random = () => Math.floor(Math.random() * 100);
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
+      balancedTree.insert(random());
       expect(testTree.isBalanced()).toEqual(true);
     });
   });
