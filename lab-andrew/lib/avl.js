@@ -5,7 +5,6 @@ class AVLNode{
     this.data = data;
     this.left = null;
     this.right = null;
-    this.balance = 0;
   }
 }
 
@@ -39,27 +38,158 @@ class AVL{
     if (this.find(value) !== -1){
       return -1;
     }
+    if (value < this.root.data && this._treeHeight(this.root.left) - this._treeHeight(this.root.right) > 0){
+      console.log('rotating');
+      if (value < this.root.left.data){
+        console.log('LL');
+        this.root = this._rotateLL(this.root);
+      } 
+      else {
+        console.log('LR');
+        this._insert(this.root, value);
+        // this.root = this._rotateLR(this.root);
+        return;
+      }
+    } else if (value > this.root.data && this._treeHeight(this.root.right) - this._treeHeight(this.root.left) > 0){
+      console.log('rotating');
+      if (value > this.root.right.data) {
+        console.log('RR');
+        this.root = this._rotateRR(this.root);
+      } 
+      else {
+        console.log('RL');
+        this._insert(this.root, value);
+        // this.root = this._rotateRL(this.root);
+        return;
+      }
+    }
     this._insert(this.root, value);
-    // balance tree now here
   }
-
+  
   _insert(node, value){
     if (node.data > value){
-      this.balance--;
+      if (this._treeHeight(node.left) - this._treeHeight(node.right) > 0){
+        console.log('rotating');
+        if (value < node.left.data) {
+          console.log('LL');
+          node = this._rotateLL(node);
+        } else {
+          console.log('LR');
+          if (!node.left) {
+            node.left = new AVLNode(value);
+            // node = this._rotateLR(node);
+            return;
+          } else {
+            this._insert(node.left, value);
+            node = this._rotateLR(node);
+            return;
+          }
+          // node = this._rotateLR(node);
+        }
+      }
       if (!node.left){
         node.left = new AVLNode(value);
         return;
       }
+      console.log(node);
       return this._insert(node.left, value);
     }
-    this.balance++;
+    if (this._treeHeight(node.right) - this._treeHeight(node.left) > 0) {
+      console.log('rotating');
+      if (value > node.right.data) {
+        console.log('RR');
+        node = this._rotateRR(node);
+      } else {
+        console.log('RL');
+        if (!node.right) {
+          node.right = new AVLNode(value);
+          return;
+        } else {
+          this._insert(node.right, value);
+          node = this._rotateRL(node);
+          return;
+        }
+      }
+    }
     if (!node.right){
       node.right = new AVLNode(value);
       return;
     }
     return this._insert(node.right, value);
-
+    
   }
+  
+  _treeHeight(node){
+    let height = 0;
+    if (node){
+      (function traverse(subTree, counter){
+        if (counter > height){
+          height = counter;
+        }
+        if (subTree.left){
+          traverse(subTree.left, counter + 1);
+        }
+        if (subTree.right){
+          traverse(subTree.right, counter + 1);
+        }
+      })(node, 1);
+    }
+    return height;
+  }
+
+  _rotateLL(node){
+    let temp = node.left;
+    node.left = temp.right;
+    temp.right = node;
+    return temp;
+  }
+
+  _rotateRR(node){
+    let temp = node.right;
+    node.right = temp.left;
+    temp.left = node;
+    return temp;
+  }
+
+  _rotateLR(node){
+    node.left = this._rotateRR(node.left);
+    return this._rotateLL(node);
+  }
+
+  _rotateRL(node){
+    node.right = this._rotateLL(node.right);
+    return this._rotateRR(node);
+  }
+
+  isBalanced() {
+    if (this._isBalanced(this.root) > -1) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  _isBalanced(node) {
+    if (!node) {
+      return 0;
+    }
+    let leftHeight = this._isBalanced(node.left);
+    if (leftHeight === -1) {
+      return -1;
+    }
+    let rightHeight = this._isBalanced(node.right);
+    if (rightHeight === -1) {
+      return -1;
+    }
+    if (Math.abs(leftHeight - rightHeight) > 1) {
+      return -1;
+    }
+    if (leftHeight > rightHeight) {
+      return leftHeight + 1;
+    }
+    return rightHeight + 1;
+  }
+
 }
 
 module.exports = AVL;

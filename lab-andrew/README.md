@@ -60,7 +60,7 @@ The remove method takes in a key (number) as a parameter. It has two helper func
 ***
 ## Code Examples:
 
-```
+```javascript
 const HashTable = require('./lib/hash-table');
 
 const table = new HashTable();

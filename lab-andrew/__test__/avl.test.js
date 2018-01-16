@@ -41,4 +41,102 @@ describe('tests for avl.js', () => {
       expect(1).toBeTruthy();
     });
   });
+
+  describe('testing _treeHeight private method', () => {
+    test('testing that it works properly', () => {
+      expect(testTree._treeHeight(testTree.root)).toEqual(2);
+    });
+  });
+
+  describe('testing that AVL tree maintains balance', () => {
+    test('testing that AVL tree maintains balance when right loaded', () => {
+      const balancedTree = new AVL();
+      balancedTree.insert(10);
+      balancedTree.insert(20);
+      balancedTree.insert(30);
+      balancedTree.insert(40);
+      balancedTree.insert(50);
+      balancedTree.insert(60);
+      balancedTree.insert(70);
+      expect(testTree.isBalanced()).toEqual(true);
+    });
+    test('testing that AVL tree maintains balanced when left loaded', () => {
+      const balancedTree = new AVL();
+      balancedTree.insert(30);
+      balancedTree.insert(20);
+      balancedTree.insert(10);
+      balancedTree.insert(9);
+      balancedTree.insert(8);
+      balancedTree.insert(7);
+      balancedTree.insert(6);
+      balancedTree.insert(5);
+      balancedTree.insert(4);
+      balancedTree.insert(3);
+      balancedTree.insert(2);
+      balancedTree.insert(1);
+      expect(testTree.isBalanced()).toEqual(true);
+    });
+    test('testing that AVL tree maintains balanced when middle loaded', () => {
+      const balancedTree = new AVL();
+      balancedTree.insert(90);
+      balancedTree.insert(10);
+      console.log(balancedTree);
+      balancedTree.insert(80);
+      balancedTree.insert(20);
+      balancedTree.insert(70);
+      balancedTree.insert(30);
+      balancedTree.insert(60);
+      balancedTree.insert(40);
+      expect(testTree.isBalanced()).toEqual(true);
+    });
+
+    test('testing that AVL tree maintains balanced in various configurations', () => {
+      const balancedTree = new AVL();
+      balancedTree.insert(80);
+      balancedTree.insert(90);
+      balancedTree.insert(100);
+      balancedTree.insert(75);
+      balancedTree.insert(65);
+      balancedTree.insert(55);
+      expect(testTree.isBalanced()).toEqual(true);
+    });
+    test('testing that AVL tree maintains balanced when loaded with random values', () => {
+      const balancedTree = new AVL();
+      let random = Math.floor(Math.random() * 100);
+      console.log('1', random);
+      balancedTree.insert(random);
+      expect(testTree.isBalanced()).toEqual(true);
+      random = Math.floor(Math.random() * 100);
+      console.log('2', random);
+      balancedTree.insert(random);
+      expect(testTree.isBalanced()).toEqual(true);
+      random = Math.floor(Math.random() * 100);
+      console.log('3', random);
+      balancedTree.insert(random);
+      expect(testTree.isBalanced()).toEqual(true);
+      random = Math.floor(Math.random() * 100);
+      console.log('4', random);
+      balancedTree.insert(random);
+      expect(testTree.isBalanced()).toEqual(true);
+      random = Math.floor(Math.random() * 100);
+      console.log('5', random);
+      balancedTree.insert(random);
+      expect(testTree.isBalanced()).toEqual(true);
+      random = Math.floor(Math.random() * 100);
+      console.log('6', random);
+      balancedTree.insert(random);
+      expect(testTree.isBalanced()).toEqual(true);
+      random = Math.floor(Math.random() * 100);
+      console.log('7', random);
+      balancedTree.insert(random);
+      expect(testTree.isBalanced()).toEqual(true);
+      random = Math.floor(Math.random() * 100);
+      console.log('8', random);
+      balancedTree.insert(random);
+      expect(testTree.isBalanced()).toEqual(true);
+      random = Math.floor(Math.random() * 100);
+      console.log('9', random);
+      expect(testTree.isBalanced()).toEqual(true);
+    });
+  });
 });
