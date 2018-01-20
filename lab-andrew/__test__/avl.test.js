@@ -115,7 +115,7 @@ describe('tests for avl.js', () => {
       testTree2.insert(12);
       testTree2.insert(19);
       testTree2.remove(10);
-      expect(deleteTest.isBalanced()).toEqual(true);
+      expect(testTree2.isBalanced()).toEqual(true);
     });
 
     test('remove should always retain balance', () => {
@@ -427,7 +427,7 @@ describe('tests for avl.js', () => {
       balancedTree.insert(50);
       balancedTree.insert(60);
       balancedTree.insert(70);
-      expect(testTree.isBalanced()).toEqual(true);
+      expect(balancedTree.isBalanced()).toEqual(true);
     });
     test('testing that AVL tree maintains balanced when left loaded', () => {
       const balancedTree = new AVL();
@@ -443,7 +443,7 @@ describe('tests for avl.js', () => {
       balancedTree.insert(3);
       balancedTree.insert(2);
       balancedTree.insert(1);
-      expect(testTree.isBalanced()).toEqual(true);
+      expect(balancedTree.isBalanced()).toEqual(true);
     });
     test('testing that AVL tree maintains balanced when middle loaded', () => {
       const balancedTree = new AVL();
@@ -455,7 +455,7 @@ describe('tests for avl.js', () => {
       balancedTree.insert(30);
       balancedTree.insert(60);
       balancedTree.insert(40);
-      expect(testTree.isBalanced()).toEqual(true);
+      expect(balancedTree.isBalanced()).toEqual(true);
     });
 
     test('testing that AVL tree maintains balanced in various configurations', () => {
@@ -466,10 +466,10 @@ describe('tests for avl.js', () => {
       balancedTree.insert(75);
       balancedTree.insert(65);
       balancedTree.insert(55);
-      expect(testTree.isBalanced()).toEqual(true);
+      expect(balancedTree.isBalanced()).toEqual(true);
     });
 
-    test('testing that AVL tree maintains balanced in various configurations 1', () => {
+    test.only('testing that AVL tree maintains balanced in various configurations 1', () => {
       const balancedTree = new AVL();
       balancedTree.insert(120);
       balancedTree.insert(90);
@@ -478,7 +478,7 @@ describe('tests for avl.js', () => {
       balancedTree.insert(105);
       balancedTree.insert(103);
       balancedTree.insert(101);
-      expect(testTree.isBalanced()).toEqual(true);
+      expect(balancedTree.isBalanced()).toEqual(true);
     });
 
     test('testing that AVL tree maintains balanced in various configurations 2', () => {
@@ -490,7 +490,7 @@ describe('tests for avl.js', () => {
       balancedTree.insert(25);
       balancedTree.insert(10);
       balancedTree.insert(5);
-      expect(testTree.isBalanced()).toEqual(true);
+      expect(balancedTree.isBalanced()).toEqual(true);
     });
 
     test('testing that AVL tree maintains balanced in various configurations 3', () => {
@@ -502,7 +502,7 @@ describe('tests for avl.js', () => {
       balancedTree.insert(25);
       balancedTree.insert(30);
       balancedTree.insert(40);
-      expect(testTree.isBalanced()).toEqual(true);
+      expect(balancedTree.isBalanced()).toEqual(true);
     });
 
     test('testing that AVL tree maintains balanced in various configurations 4', () => {
@@ -513,7 +513,7 @@ describe('tests for avl.js', () => {
       balancedTree.insert(20);
       balancedTree.insert(30);
       balancedTree.insert(40);
-      expect(testTree.isBalanced()).toEqual(true);
+      expect(balancedTree.isBalanced()).toEqual(true);
     });
 
 
@@ -525,7 +525,7 @@ describe('tests for avl.js', () => {
       balancedTree.insert(20);
       balancedTree.insert(10);
       balancedTree.insert(5);
-      expect(testTree.isBalanced()).toEqual(true);
+      expect(balancedTree.isBalanced()).toEqual(true);
     });
 
     test('testing that AVL tree maintains balanced in various configurations 6', () => {
@@ -536,7 +536,7 @@ describe('tests for avl.js', () => {
       balancedTree.insert(20);
       balancedTree.insert(25);
       balancedTree.insert(24);
-      expect(testTree.isBalanced()).toEqual(true);
+      expect(balancedTree.isBalanced()).toEqual(true);
     });
     test('testing that AVL tree maintains balanced in various configurations 7', () => {
       const balancedTree = new AVL();
@@ -546,7 +546,7 @@ describe('tests for avl.js', () => {
       balancedTree.insert(20);
       balancedTree.insert(23);
       balancedTree.insert(24);
-      expect(testTree.isBalanced()).toEqual(true);
+      expect(balancedTree.isBalanced()).toEqual(true);
     });
     test('testing that AVL tree maintains balanced in various configurations 8', () => {
       const balancedTree = new AVL();
@@ -556,7 +556,7 @@ describe('tests for avl.js', () => {
       balancedTree.insert(20);
       balancedTree.insert(22);
       balancedTree.insert(23);
-      expect(testTree.isBalanced()).toEqual(true);
+      expect(balancedTree.isBalanced()).toEqual(true);
     });
     test('testing that AVL tree maintains balanced in various configurations 9', () => {
       const balancedTree = new AVL();
@@ -566,7 +566,7 @@ describe('tests for avl.js', () => {
       balancedTree.insert(20);
       balancedTree.insert(33);
       balancedTree.insert(35);
-      expect(testTree.isBalanced()).toEqual(true);
+      expect(balancedTree.isBalanced()).toEqual(true);
     });
     test('testing that AVL tree maintains balanced in various configurations 10', () => {
       const balancedTree = new AVL();
@@ -576,7 +576,7 @@ describe('tests for avl.js', () => {
       balancedTree.insert(20);
       balancedTree.insert(50);
       balancedTree.insert(45);
-      expect(testTree.isBalanced()).toEqual(true);
+      expect(balancedTree.isBalanced()).toEqual(true);
     });
     test('testing that AVL tree maintains balanced in various configurations 11', () => {
       const balancedTree = new AVL();
@@ -586,7 +586,7 @@ describe('tests for avl.js', () => {
       balancedTree.insert(20);
       balancedTree.insert(39);
       balancedTree.insert(35);
-      expect(testTree.isBalanced()).toEqual(true);
+      expect(balancedTree.isBalanced()).toEqual(true);
     });
 
     test('testing that AVL tree maintains balanced when loaded with random values', () => {
@@ -594,26 +594,26 @@ describe('tests for avl.js', () => {
       balancedTree.insert(random());
       balancedTree.insert(random());
       balancedTree.insert(random());
-      expect(testTree.isBalanced()).toEqual(true);
+      expect(balancedTree.isBalanced()).toEqual(true);
       balancedTree.insert(random());
       balancedTree.insert(random());
       balancedTree.insert(random());
       balancedTree.insert(random());
       balancedTree.insert(random());
-      expect(testTree.isBalanced()).toEqual(true);
+      expect(balancedTree.isBalanced()).toEqual(true);
       balancedTree.insert(random());
       balancedTree.insert(random());
       balancedTree.insert(random());
       balancedTree.insert(random());
       balancedTree.insert(random());
       balancedTree.insert(random());
-      expect(testTree.isBalanced()).toEqual(true);
+      expect(balancedTree.isBalanced()).toEqual(true);
       balancedTree.insert(random());
       balancedTree.insert(random());
       balancedTree.insert(random());
       balancedTree.insert(random());
       balancedTree.insert(random());
-      expect(testTree.isBalanced()).toEqual(true);
+      expect(balancedTree.isBalanced()).toEqual(true);
       balancedTree.insert(random());
       balancedTree.insert(random());
       balancedTree.insert(random());
@@ -621,7 +621,7 @@ describe('tests for avl.js', () => {
       balancedTree.insert(random());
       balancedTree.insert(random());
       balancedTree.insert(random());
-      expect(testTree.isBalanced()).toEqual(true);
+      expect(balancedTree.isBalanced()).toEqual(true);
       balancedTree.insert(random());
       balancedTree.insert(random());
       balancedTree.insert(random());
@@ -630,7 +630,7 @@ describe('tests for avl.js', () => {
       balancedTree.insert(random());
       balancedTree.insert(random());
       balancedTree.insert(random());
-      expect(testTree.isBalanced()).toEqual(true);
+      expect(balancedTree.isBalanced()).toEqual(true);
       balancedTree.insert(random());
       balancedTree.insert(random());
       balancedTree.insert(random());
@@ -638,21 +638,21 @@ describe('tests for avl.js', () => {
       balancedTree.insert(random());
       balancedTree.insert(random());
       balancedTree.insert(random());
-      expect(testTree.isBalanced()).toEqual(true);
+      expect(balancedTree.isBalanced()).toEqual(true);
       balancedTree.insert(random());
       balancedTree.insert(random());
       balancedTree.insert(random());
       balancedTree.insert(random());
       balancedTree.insert(random());
       balancedTree.insert(random());
-      expect(testTree.isBalanced()).toEqual(true);
+      expect(balancedTree.isBalanced()).toEqual(true);
       balancedTree.insert(random());
       balancedTree.insert(random());
       balancedTree.insert(random());
       balancedTree.insert(random());
       balancedTree.insert(random());
       balancedTree.insert(random());
-      expect(testTree.isBalanced()).toEqual(true);
+      expect(balancedTree.isBalanced()).toEqual(true);
       balancedTree.insert(random());
       balancedTree.insert(random());
       balancedTree.insert(random());
@@ -660,7 +660,7 @@ describe('tests for avl.js', () => {
       balancedTree.insert(random());
       balancedTree.insert(random());
       balancedTree.insert(random());
-      expect(testTree.isBalanced()).toEqual(true);
+      expect(balancedTree.isBalanced()).toEqual(true);
       balancedTree.insert(random());
       balancedTree.insert(random());
       balancedTree.insert(random());
@@ -669,7 +669,7 @@ describe('tests for avl.js', () => {
       balancedTree.insert(random());
       balancedTree.insert(random());
       balancedTree.insert(random());
-      expect(testTree.isBalanced()).toEqual(true);
+      expect(balancedTree.isBalanced()).toEqual(true);
       balancedTree.insert(random());
       balancedTree.insert(random());
       balancedTree.insert(random());
@@ -677,13 +677,13 @@ describe('tests for avl.js', () => {
       balancedTree.insert(random());
       balancedTree.insert(random());
       balancedTree.insert(random());
-      expect(testTree.isBalanced()).toEqual(true);
+      expect(balancedTree.isBalanced()).toEqual(true);
       balancedTree.insert(random());
       balancedTree.insert(random());
       balancedTree.insert(random());
       balancedTree.insert(random());
       balancedTree.insert(random());
-      expect(testTree.isBalanced()).toEqual(true);
+      expect(balancedTree.isBalanced()).toEqual(true);
     });
   });
 });
